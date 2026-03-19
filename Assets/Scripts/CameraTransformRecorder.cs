@@ -11,10 +11,10 @@ public class CameraTransformRecorder : MonoBehaviour
     public float captureInterval = 0.1f;
     public string apiUrl = "http://127.0.0.1:8000/analyze/camera";
 
-    private bool isRecording;
-    private float timer;
+    private bool _isRecording;
+    private float _timer;
 
-    private List<CameraTransformSample> samples = new();
+    private List<CameraTransformSample> _samples = new();
 
     void Update()
     {
@@ -27,32 +27,32 @@ public class CameraTransformRecorder : MonoBehaviour
         if (Keyboard.current.oKey.wasPressedThisFrame)
             StopAndSend();
 
-        if (!isRecording)
+        if (!_isRecording)
             return;
 
-        timer += Time.deltaTime;
+        _timer += Time.deltaTime;
 
-        if (timer >= captureInterval)
+        if (_timer >= captureInterval)
         {
-            timer = 0f;
+            _timer = 0f;
             CaptureTransform();
         }
     }
 
     void StartRecording()
     {
-        samples.Clear();
-        isRecording = true;
-        timer = 0f;
+        _samples.Clear();
+        _isRecording = true;
+        _timer = 0f;
 
-        Debug.Log("Gravação iniciada");
+        Debug.Log("Gravacao iniciada");
     }
 
     void CaptureTransform()
     {
         Transform t = targetCamera.transform;
 
-        samples.Add(new CameraTransformSample
+        _samples.Add(new CameraTransformSample
         {
             px = t.position.x,
             py = t.position.y,
@@ -67,11 +67,11 @@ public class CameraTransformRecorder : MonoBehaviour
 
     void StopAndSend()
     {
-        isRecording = false;
+        _isRecording = false;
 
         CameraTransformData data = new()
         {
-            samples = samples
+            samples = _samples
         };
 
         string json = JsonUtility.ToJson(data, true);
