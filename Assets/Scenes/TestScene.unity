@@ -1477,6 +1477,7 @@ GameObject:
   - component: {fileID: 8642335935406392199}
   - component: {fileID: 3633166176422219628}
   - component: {fileID: 7079350338048567821}
+  - component: {fileID: 8642335935406392200}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5262,6 +5263,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166606519899138330}
   m_Enabled: 1
+--- !u!114 &8642335935406392200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166606519899138330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5476a51181d4446aac2da02a81ffa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraRaycast
+  maxDistance: 10
 --- !u!114 &8848608380530536999
 MonoBehaviour:
   m_ObjectHideFlags: 0
